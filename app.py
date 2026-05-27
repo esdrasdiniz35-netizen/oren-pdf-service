@@ -12,13 +12,15 @@ from datetime import datetime
 
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
+import reportlab as _rl
 
 app = Flask(__name__)
 
 # =================== FONTES COM SUPORTE A PORTUGUÊS ===================
-pdfmetrics.registerFont(TTFont("LiberationSans", "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"))
-pdfmetrics.registerFont(TTFont("LiberationSans-Bold", "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"))
-pdfmetrics.registerFont(TTFont("LiberationSans-Italic", "/usr/share/fonts/truetype/liberation/LiberationSans-Italic.ttf"))
+_FONTS_DIR = os.path.join(os.path.dirname(_rl.__file__), 'fonts')
+pdfmetrics.registerFont(TTFont("LiberationSans", os.path.join(_FONTS_DIR, "Vera.ttf")))
+pdfmetrics.registerFont(TTFont("LiberationSans-Bold", os.path.join(_FONTS_DIR, "VeraBd.ttf")))
+pdfmetrics.registerFont(TTFont("LiberationSans-Italic", os.path.join(_FONTS_DIR, "VeraIt.ttf")))
 
 # =================== CORES OREN IA ===================
 NAVY = colors.HexColor('#0A1F44')
